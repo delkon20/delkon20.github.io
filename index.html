@@ -1,91 +1,139 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GMOVIE STREAMING</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .poster-card {
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 400px;
+      position: relative;
+    }
+    .poster-image {
+      width: 250px;
+      height: 375px;
+      border: 5px solid red;
+      margin-bottom: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .poster-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .details {
+      text-align: center;
+    }
+    .details h2 {
+      font-size: 20px;
+      margin: 0;
+    }
+    .details p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: red;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 24px;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    .play-button:hover {
+      background-color: darkred;
+    }
+    .watch-button {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    .watch-button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster-card">
+    <div class="poster-image">
+      <img src="" alt="Film Poster" id="poster-image">
+      <button class="play-button" id="play-button">&#9658;</button>
+    </div>
+    <div class="details">
+      <h2 id="movie-title">Movie Title</h2>
+      <p id="release-date">Release Date: </p>
+      <button class="watch-button" id="watch-button">CLICK TO WATCH</button>
+    </div>
+  </div>
 
-  <head>
-    <title>tv-series</title>
-    <meta charSet="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Watch and Download Movies & TV Shows">
-    <meta property="og:image" content="">
-    <link rel="shortcut icon" href="https://www.launchaco.com/static/favicon.ico" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <script>
+    const API_KEY = "3ed72f657ce5c5779383b2191d6d0111";
+    const movieId = new URLSearchParams(window.location.search).get
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/color.css">
+("watch_id");
+    const posterImage = document.getElementById("poster-image");
+    const movieTitle = document.getElementById("movie-title");
+    const releaseDate = document.getElementById("release-date");
+    const watchButton = document.getElementById("watch-button");
+    const playButton = document.getElementById("play-button");
 
-    <!DOCTYPE html>
-    <html>
+    // Fetch movie details from TMDB API
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`)
+      .then(response => response.json())
+      .then(data => {
+        const imageUrl = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
+        const title = data.original_title;
+        const release = data.release_date;
 
-    <head>
-      </script>
+        posterImage.src = imageUrl;
+        movieTitle.innerText = title;
+        releaseDate.innerText = `Release Date: ${release}`;
 
-    </html>
+        // Set the watch button link
+        watchButton.addEventListener("click", () => {
+          window.location.href = `https://megafilm.xyz/movie/${movieId}`;
+        });
 
-    <style>
-    </style>
-    </head>
-
-    <body class="font-friendly">
-      <div class="lightblue-gradient background">
-        <div class="bg">
-          <div class="bg-image" style="background-image: url(&quot;images/5d28494e-8bcb-48f1-8747-fb61646cb34e.png&quot;);"></div>
-        </div>
-        <header class="header">
-          <div class="container-lrg">
-            <div class="flex col-12 spread">
-              <a class="logo primary-color logo">cinemazu-tv.xyz</a>
-                         </div>
-          </div>
-        </header>
-        <section class="section">
-          <div class="container mb40">
-            <div class="col-12 text-center">
-			      <center>
-        <script type="text/javascript">
-          atOptions = {
-            'key': 'ce5195f3f709726acd5db093543e63e7',
-            'format': 'iframe',
-            'height': 50,
-            'width': 320,
-            'params':
-            {}
-          };
-          document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://bangtyranclank.com/ce5195f3f709726acd5db093543e63e7/invoke.js"></scr' + 'ipt>');
-        </script>
-      </center>
-              <h1 class="heading-lrg primary-color">Watch and Download Movies &amp; TV Shows</h1>
-              <h2 class="subheading secondary-color mt20">Browse and Watch all your favorite online movies &amp; series for free!
-              </h2>
-              <div class="mt40">
-                <a href="https://cinemazu-tv.xyz/en/tv-popular" target="_blank" class="button mobile-text-center mt10 mr10 mobile-text-center accent-bg primary-color">
-                  <span> CLICK HERE TO WATCH </span>
-                </a>
-                <a href="https://cinemazu-tv.xyz/en/tv-on-the-air" target="_blank" class="button mobile-text-center mt10">
-                  <span> CLICK HERE TO DOWNLOAD </span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="container-lrg">
-            <div class="col-12">
-              <div class="computerphone">
-                <div class="computerphone-computer">
-                  <div class="mask">
-                    <img src="images/b9c2fbe3-a49c-45b1-bc21-0fc1b589d106.png" alt="Screenshot of App inside a laptop" class="mask-img">
-                  </div>
-                  <div class="computerphone-computer-bottom"></div>
-                </div>
-                <div class="computerphone-iphone">
-                  <div class="mask">
-                    <img src="images/3e01b6fb-05e7-470d-bb2d-36649e22d2ff.png" alt="Screenshot of iPhone App" class="mask-img">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-    </body>
-
+        // Set the play button click event
+        playButton.addEventListener("click", () => {
+          window.location.href = `https://megafilm.xyz/movie/${movieId}`;
+        });
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
 </html>
