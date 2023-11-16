@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judul Halaman</title>
+</head>
+<body>
+    <?php
+    // Mengambil variabel 'q' dari alamat browser dan menyimpannya dalam variabel 'var_judul'
+    $var_judul = $_GET["q"];
+
+    // Mengganti tanda hubung dengan spasi pada nilai variabel 'var_judul'
+    $var_judul = str_replace("-", " ", $var_judul);
+
+    // Menampilkan nilai variabel 'var_judul'
+    echo $var_judul;
+    ?>
+</body>
+</html>
 <!doctype html>  
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
